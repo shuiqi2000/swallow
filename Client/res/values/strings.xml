@@ -2,8 +2,14 @@
 <resources>
 
     <string name="hello">Hello World, ClientActivity!</string>
-    <string name="app_name">Client</string>
-    <string name="SEARCH">搜索</string>
-    <string name="CONNECT">连接</string>
+    <string name="app_name">掌上控-客户端</string>
+    <string name="SEARCH">搜 索</string>
+    <string name="CONNECT">连 接</string>
+    <string name="method">方式</string>
+    <string name="Address">地址</string>
+    <string name="Port">端口</string>
+    <string name="MouseControl">鼠标控制</string>
+    <string name="OtherControl">其它</string>
+    <string name="MouseControlDescription">触摸屏幕，可以操作电脑</string>
 
 </resources>

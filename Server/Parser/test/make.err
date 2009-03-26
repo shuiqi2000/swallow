@@ -1,0 +1,1 @@
+g++.exe  ParserTest.o  -o "ParserTest.exe" -L"d:/Dev-Cpp/lib" -lboost_unit_test_framework -lstdc++ -pg

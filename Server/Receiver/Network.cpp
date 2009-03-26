@@ -20,3 +20,6 @@ void Network::setReceiver(Receiver * receiver){
 int Network::send(unsigned char * data, int length){
 	return 0;
 }
+
+void Network::close(){
+}

@@ -1,14 +1,15 @@
 package com.pc.controller;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.widget.Toast;
 
 import com.pc.controller.action.MouseAction;
-import com.pc.controller.task.AutoSearchTask;
 
 public class ClientActivity extends Activity implements OnGestureListener
 
@@ -107,5 +108,17 @@ public class ClientActivity extends Activity implements OnGestureListener
 		DisplayToast("SingleTapUp");	
 		return false;
 	}
+	
+	public boolean onKeyDown(int keyCode, KeyEvent event)  {   
+	    if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {   
+	    	Intent intent = new Intent();  
+	    	intent.setClass(ClientActivity.this, ConfigActivity.class);
+			startActivity(intent);
+			finish();
+	        return true;   
+	    }   
+	  
+	    return super.onKeyDown(keyCode, event);   
+	}  
 
 }

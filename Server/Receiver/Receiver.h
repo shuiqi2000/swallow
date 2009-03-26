@@ -1,8 +1,10 @@
 #ifndef RECEIVER_H
 #define RECEIVER_H
+#include "Control.h"
 #include "Network.h"
+#include <list>
 class Network;
-class Receiver
+class Receiver: public Control
 {
 public:
 	Receiver(Network * network);
@@ -10,6 +12,7 @@ public:
 public:
 	virtual void start();
 	virtual void handleData(unsigned char * buf);
+	virtual Network * getNetwork();
 protected:
 	Network* network;
 };

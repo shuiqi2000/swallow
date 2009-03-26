@@ -36,6 +36,7 @@ public:
 	virtual void start();
 	static void sendUDPPacket(string ip,int port);
 	virtual int send(unsigned char * data, int length);
+	virtual void close();
 
 protected:
 	virtual void run();

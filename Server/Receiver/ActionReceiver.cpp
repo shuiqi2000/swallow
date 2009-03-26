@@ -14,6 +14,6 @@ ActionReceiver::~ActionReceiver(void){
 void ActionReceiver::handleData(unsigned char * data){
 	ActionParser* actionParser = ActionParserHandle::getInstance()->getActionParser(data[0]);
 	if(actionParser != NULL){
-		actionParser->parse(data);
+		actionParser->parse(data, this);
 	}
 }

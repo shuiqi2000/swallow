@@ -88,3 +88,7 @@ int UDPNetwork::send(unsigned char * data, int length){
 	sock.send_to(buffer(data, length), send_ep);
 	return 0;
 }
+
+void UDPNetwork::close(){
+    ios.stop();
+}

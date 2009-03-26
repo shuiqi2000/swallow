@@ -3,26 +3,128 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/linearLayout8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/labelMethod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/method"
+                android:textSize="24dp" />
+
+        </LinearLayout>
+
+        <Spinner
+            android:id="@+id/spinMethod"
+            android:layout_width="129dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/Address"
+        android:layout_width="74dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="20dp"
+        android:text="@string/Address"
+        android:textSize="24dp" />
+
+    <EditText
+        android:id="@+id/editAddr"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="5dp" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/Port"
+        android:layout_width="74dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="20dp"
+        android:text="@string/Port"
+        android:textSize="24dp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/editPort"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/CONNECT"
+            android:layout_width="72dp"
+            android:layout_height="42dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/CONNECT" />
+
+    </LinearLayout>
+
     <LinearLayout
         android:id="@+id/searchLinearLayout"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="fill_horizontal"
         android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="260dp" >
 
-        <Button
-            android:id="@+id/SEARCH"
-            android:layout_width="78dp"
-            android:layout_height="32dp"
-            android:text="@string/SEARCH" />
-
-        <Button
-            android:id="@+id/CONNECT"
-            android:layout_width="78dp"
-            android:layout_height="32dp"
-            android:text="@string/CONNECT" />
-
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

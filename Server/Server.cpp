@@ -1,7 +1,5 @@
 #include "Server.h"
 
-
-
 #include "Receiver/ActionReceiver.h"
 #include "Receiver/ConfigReceiver.h"
 #include "receiver/UDPNetwork.h"

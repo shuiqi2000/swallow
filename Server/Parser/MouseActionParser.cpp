@@ -14,8 +14,7 @@ MouseActionParser::~MouseActionParser(void)
 {
 }
 
-int MouseActionParser::parse(unsigned char *data){
-	
+int MouseActionParser::parse(unsigned char *data, Receiver * receiver){	
 	mouseAction->action(*(usint *)(data + 1), *(usint *)(data + 3), *(usint *)(data + 5), *(sint *)(data + 7));
 	return 0;
 }

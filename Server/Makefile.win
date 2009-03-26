@@ -5,9 +5,9 @@ CPP  = g++.exe -D__DEBUG__
 CC   = gcc.exe -D__DEBUG__
 WINDRES = windres.exe
 RES  = 
-OBJ  = Server.o receiver/ActionReceiver.o receiver/ConfigReceiver.o receiver/Network.o receiver/Receiver.o receiver/UDPNetwork.o action/MouseAction.o action/MouseEventMouseAction.o parser/ActionParser.o parser/ActionParserHandle.o parser/MouseActionParser.o log/Log.o $(RES)
-LINKOBJ  = Server.o receiver/ActionReceiver.o receiver/ConfigReceiver.o receiver/Network.o receiver/Receiver.o receiver/UDPNetwork.o action/MouseAction.o action/MouseEventMouseAction.o parser/ActionParser.o parser/ActionParserHandle.o parser/MouseActionParser.o log/Log.o $(RES)
-LIBS =  -L"d:/Dev-Cpp/lib" -L"G:/研究/c++/boost/boost库使用/SDK/boost_1_44_0/bin/vc9/lib" -mwindows -lwsock32 -lboost_system -lWS2_32 -mwindows  -lgmon -pg  -g3 
+OBJ  = Server.o receiver/ActionReceiver.o receiver/ConfigReceiver.o receiver/Network.o receiver/Receiver.o receiver/UDPNetwork.o action/MouseAction.o action/MouseEventMouseAction.o parser/ActionParser.o parser/ActionParserHandle.o parser/MouseActionParser.o log/Log.o test/Test.o parser/test/ParserTest.o parser/ConfigParser.o receiver/Control.o $(RES)
+LINKOBJ  = Server.o receiver/ActionReceiver.o receiver/ConfigReceiver.o receiver/Network.o receiver/Receiver.o receiver/UDPNetwork.o action/MouseAction.o action/MouseEventMouseAction.o parser/ActionParser.o parser/ActionParserHandle.o parser/MouseActionParser.o log/Log.o test/Test.o parser/test/ParserTest.o parser/ConfigParser.o receiver/Control.o $(RES)
+LIBS =  -L"d:/Dev-Cpp/lib" -mwindows -lwsock32 -lboost_system -lWS2_32 -mwindows  -lgmon -pg  -g3 
 INCS =  -I"d:/Dev-Cpp/include" 
 CXXINCS =  -I"d:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"d:/Dev-Cpp/include/c++/3.4.2/backward"  -I"d:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"d:/Dev-Cpp/include/c++/3.4.2"  -I"d:/Dev-Cpp/include" 
 BIN  = Server.exe
@@ -61,3 +61,15 @@ parser/MouseActionParser.o: parser/MouseActionParser.cpp
 
 log/Log.o: log/Log.cpp
 	$(CPP) -c log/Log.cpp -o log/Log.o $(CXXFLAGS)
+
+test/Test.o: test/Test.cpp
+	$(CPP) -c test/Test.cpp -o test/Test.o $(CXXFLAGS)
+
+parser/test/ParserTest.o: parser/test/ParserTest.cpp
+	$(CPP) -c parser/test/ParserTest.cpp -o parser/test/ParserTest.o $(CXXFLAGS)
+
+parser/ConfigParser.o: parser/ConfigParser.cpp
+	$(CPP) -c parser/ConfigParser.cpp -o parser/ConfigParser.o $(CXXFLAGS)
+
+receiver/Control.o: receiver/Control.cpp
+	$(CPP) -c receiver/Control.cpp -o receiver/Control.o $(CXXFLAGS)

@@ -21,3 +21,7 @@ void Receiver::handleData(unsigned char * data){
 
 }
 
+Network * Receiver::getNetwork(){
+    return network;
+}
+

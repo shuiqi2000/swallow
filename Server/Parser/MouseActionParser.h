@@ -11,7 +11,7 @@ public:
 	MouseActionParser(void);
 	~MouseActionParser(void);
 public:
-	virtual int parse(unsigned char *data);
+	virtual int parse(unsigned char *data, Receiver * receiver);
 public:
 	static int deviceType;
 private:

@@ -1,0 +1,41 @@
+CPP  = g++.exe 
+CC   = gcc.exe 
+WINDRES = windres.exe
+RES  = 
+OBJ  = ParserTest.o MouseActionParser.o ActionParser.o ActionParserHandle.o MouseEventMouseAction.o MouseAction.o $(RES)
+LINKOBJ  = ParserTest.o MouseActionParser.o ActionParser.o ActionParserHandle.o MouseEventMouseAction.o MouseAction.o $(RES)
+LIBS =  -L"d:/Dev-Cpp/lib" -lboost_unit_test_framework -pg
+INCS =  -I"d:/Dev-Cpp/include" 
+CXXINCS =  -I"d:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"d:/Dev-Cpp/include/c++/3.4.2/backward"  -I"d:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"d:/Dev-Cpp/include/c++/3.4.2"  -I"d:/Dev-Cpp/include" 
+BIN  = ParserTest.exe
+CXXFLAGS = $(CXXINCS)   -pg -g3
+CFLAGS = $(INCS)   -pg -g3
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before ParserTest.exe all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "ParserTest.exe" $(LIBS)
+
+ParserTest.o: ParserTest.cpp
+	$(CPP) -c ParserTest.cpp -o ParserTest.o $(CXXFLAGS)
+
+MouseActionParser.o: ../MouseActionParser.cpp
+	$(CPP) -c ../MouseActionParser.cpp -o MouseActionParser.o $(CXXFLAGS)
+
+ActionParser.o: ../ActionParser.cpp
+	$(CPP) -c ../ActionParser.cpp -o ActionParser.o $(CXXFLAGS)
+
+ActionParserHandle.o: ../ActionParserHandle.cpp
+	$(CPP) -c ../ActionParserHandle.cpp -o ActionParserHandle.o $(CXXFLAGS)
+
+MouseAction.o: ../../action/MouseAction.cpp
+	$(CPP) -c ../../action/MouseAction.cpp -o MouseAction.o $(CXXFLAGS)
+
+MouseEventMouseAction.o: ../../action/MouseEventMouseAction.cpp
+	$(CPP) -c ../../action/MouseEventMouseAction.cpp -o MouseEventMouseAction.o $(CXXFLAGS)
