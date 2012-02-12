@@ -12,9 +12,9 @@ MouseActionParser::~MouseActionParser(void)
 {
 }
 
-int MouseActionParser::parse(char *data){
+int MouseActionParser::parse(unsigned char *data){
 	MouseAction* mouseAction = new MouseEventMouseAction;
-	mouseAction->action(*(uint *)(data + 1), *(uint *)(data + 3), *(uint *)(data + 5), *(int *)(data + 7));
+	mouseAction->action(*(usint *)(data + 1), *(usint *)(data + 3), *(usint *)(data + 5), *(sint *)(data + 7));
 	return 0;
 }
 

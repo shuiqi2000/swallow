@@ -48,13 +48,13 @@ void UDPNetwork::run(){
 
 void UDPNetwork::handlePacket(boost::shared_ptr<boost::asio::ip::udp::endpoint> sender_endpoint, 
 		const system::error_code& error,
-	    char * buf,
+	    unsigned char * buf,
 	    int size){
 
-	char * useBuf = new char[defaultBufSize];
+	unsigned char * useBuf = new unsigned char[defaultBufSize];
 	memcpy(useBuf, buf, defaultBufSize);
 	OutputDebugString("\r\n");
-    OutputDebugString(useBuf);
+    OutputDebugString((char *)useBuf);
     OutputDebugString("\r\n");
 	OutputDebugString(sender_endpoint->address().to_string().c_str());
     OutputDebugString("\r\n");

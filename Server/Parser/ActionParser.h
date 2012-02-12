@@ -7,8 +7,6 @@ public:
 	ActionParser(void);
 	~ActionParser(void);
 public:
-	virtual int parse(char * data);
-
-
+	virtual int parse(unsigned char * data);
 
 };

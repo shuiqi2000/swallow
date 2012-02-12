@@ -9,7 +9,7 @@ public:
 	MouseActionParser(void);
 	~MouseActionParser(void);
 public:
-	virtual int parse(char *data);
+	virtual int parse(unsigned char *data);
 public:
 	static int deviceType;
 };

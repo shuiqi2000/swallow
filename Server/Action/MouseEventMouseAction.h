@@ -9,9 +9,9 @@ class MouseEventMouseAction :
 public:
 	MouseEventMouseAction(void);
 	virtual ~MouseEventMouseAction(void);
-	virtual void action(uint flag, uint dx, uint dy, int  wheel);
+	virtual void action(usint flag, usint dx, usint dy, sint  wheel);
 
 public:
-	uint lastFlag;
+	usint lastFlag;
 };
 

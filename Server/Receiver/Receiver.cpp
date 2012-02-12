@@ -17,13 +17,10 @@ Receiver::~Receiver(void)
 void Receiver::start(){
 	network->start();
 }
-void Receiver::handleData(char * data){
-	ActionParser* actionParser = ActionParserHandle::getInstance()->getActionParser(1);
+
+void Receiver::handleData(unsigned char * data){
+	ActionParser* actionParser = ActionParserHandle::getInstance()->getActionParser(data[0]);
 	if(actionParser != NULL){
 		actionParser->parse(data);
 	}
-	/*
-	MouseEventMouseAction ma;
-	ma.action(MouseAction::MOUSEEVENT_MOVE, 1, 1, 0);
-	*/
 }

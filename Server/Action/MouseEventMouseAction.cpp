@@ -9,8 +9,8 @@ MouseEventMouseAction::~MouseEventMouseAction(void)
 {
 }
 
-void MouseEventMouseAction::action(uint flag, uint dx, uint dy, int  wheel){
-	uint dwFlags = 0;
+void MouseEventMouseAction::action(usint flag, usint dx, usint dy, sint  wheel){
+	usint dwFlags = 0;
 	if ((flag & MouseAction::MOUSEEVENT_LEFT)
 		&& !(lastFlag & MouseAction::MOUSEEVENT_LEFT)){
 		dwFlags |= MOUSEEVENTF_LEFTDOWN;
@@ -43,7 +43,6 @@ void MouseEventMouseAction::action(uint flag, uint dx, uint dy, int  wheel){
 
 	if (flag & MouseAction::MOUSEEVENT_ABSOLUTEMOVE){
 		dwFlags |= MOUSEEVENTF_ABSOLUTE;
-	    
 	}
 
 	mouse_event(dwFlags, dx, dy, 0, 0);

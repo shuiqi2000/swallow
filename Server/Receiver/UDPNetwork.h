@@ -17,7 +17,7 @@ private:
 	typedef shared_ptr<ip::udp::socket> sock_pt;
 	int serverPort;
 	bool isRunning;
-	char buf[defaultBufSize];
+	unsigned char buf[defaultBufSize];
 	sock_pt socket;
     boost::asio::io_service ios;
 
@@ -34,7 +34,7 @@ protected:
 private:
 	void handlePacket(boost::shared_ptr<boost::asio::ip::udp::endpoint> sender_endpoint, 
 		const system::error_code& error,
-	    char * buf,
+	    unsigned char * buf,
 	    int size);
 
 };

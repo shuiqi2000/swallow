@@ -11,6 +11,6 @@ ActionParser::~ActionParser(void)
 
 }
 
-int ActionParser::parse(char * data){
+int ActionParser::parse(unsigned char * data){
 	return 0;
 }

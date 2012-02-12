@@ -1,6 +1,7 @@
 #pragma once
 
-typedef unsigned int uint;
+typedef unsigned short int usint;
+typedef short int sint;
 class MouseAction
 {
 public:
@@ -22,14 +23,14 @@ action:
      d2     d1    d0
 	 middle right left
 */
-	virtual void action(uint action, uint dx, uint dy, int  wheel)=0;
+	virtual void action(usint action, usint dx, usint dy, sint  wheel)=0;
 
 public:
 
-	const static uint MOUSEEVENT_LEFT;
-	const static uint MOUSEEVENT_RIGHT;
-	const static uint MOUSEEVENT_MIDDLE;
-	const static uint MOUSEEVENT_ABSOLUTEMOVE;
-	const static uint MOUSEEVENT_MOVE;
+	const static usint MOUSEEVENT_LEFT;
+	const static usint MOUSEEVENT_RIGHT;
+	const static usint MOUSEEVENT_MIDDLE;
+	const static usint MOUSEEVENT_ABSOLUTEMOVE;
+	const static usint MOUSEEVENT_MOVE;
 
 };

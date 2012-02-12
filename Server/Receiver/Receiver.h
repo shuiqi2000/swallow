@@ -8,7 +8,7 @@ public:
 	virtual ~Receiver(void);
 public:
 	void start();
-	void handleData(char * buf);
+	void handleData(unsigned char * buf);
 private:
 	Network* network;
 };
