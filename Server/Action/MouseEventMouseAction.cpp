@@ -47,6 +47,4 @@ void MouseEventMouseAction::action(uint flag, uint dx, uint dy, int  wheel){
 	}
 
 	mouse_event(dwFlags, dx, dy, 0, 0);
-
-
 }

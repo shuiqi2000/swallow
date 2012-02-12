@@ -9,7 +9,7 @@ int APIENTRY _tWinMain(HINSTANCE hIns,
 {
 	Receiver receiver;
 	receiver.start();	
-    return 1;
+    return 0;
 }
 
 

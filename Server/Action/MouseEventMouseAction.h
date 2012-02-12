@@ -2,6 +2,7 @@
 #include "mouseaction.h"
 #include <winuser.h>
 
+
 class MouseEventMouseAction :
 	public MouseAction
 {
