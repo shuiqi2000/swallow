@@ -2,7 +2,9 @@
 #include "MouseActionParser.h"
 #include "../action/MouseAction.h"
 #include "../action/MouseEventMouseAction.h"
+
 int MouseActionParser::deviceType = 1;
+
 MouseActionParser::MouseActionParser(void)
 {
 	ActionParserHandle::getInstance()->addActionParser(deviceType, this);

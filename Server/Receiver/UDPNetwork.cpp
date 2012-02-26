@@ -41,7 +41,6 @@ void UDPNetwork::run(){
 					                           buf,
 					                           placeholders::bytes_transferred)); 
     
-	    OutputDebugString("Network::run() end");
 	}
 
 }
@@ -54,8 +53,6 @@ void UDPNetwork::handlePacket(boost::shared_ptr<boost::asio::ip::udp::endpoint> 
 	unsigned char * useBuf = new unsigned char[defaultBufSize];
 	memcpy(useBuf, buf, defaultBufSize);
 	OutputDebugString("\r\n");
-    OutputDebugString((char *)useBuf);
-    OutputDebugString("\r\n");
 	OutputDebugString(sender_endpoint->address().to_string().c_str());
     OutputDebugString("\r\n");
 
