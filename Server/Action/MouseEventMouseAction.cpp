@@ -3,6 +3,8 @@
 
 MouseEventMouseAction::MouseEventMouseAction(void)
 {
+	lastFlag = 0;
+
 }
 
 MouseEventMouseAction::~MouseEventMouseAction(void)
@@ -53,4 +55,6 @@ void MouseEventMouseAction::action(usint flag, usint dx, usint dy, sint  wheel){
 	}
 
 	mouse_event(dwFlags, dx, dy, 0, 0);
+
+	lastFlag = flag;
 }

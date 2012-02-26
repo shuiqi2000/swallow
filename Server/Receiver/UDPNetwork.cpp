@@ -26,7 +26,6 @@ void UDPNetwork::start(){
 
 void UDPNetwork::run(){
 	if (isRunning){
-        OutputDebugString("Network::run()");
 	    memset(buf,0,defaultBufSize);
   
 	    shared_ptr<boost::asio::ip::udp::endpoint> sender_endpoint(new boost::asio::ip::udp::endpoint);
