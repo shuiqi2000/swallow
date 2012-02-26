@@ -16,6 +16,7 @@ public class ClientActivity extends Activity implements OnGestureListener
     /** Called when the activity is first created. */
 	private int lastX;
 	private int lastY;
+	private int distance = 0;
 	private GestureDetector gd;  
 	private MouseAction mouseAction = new MouseAction();
     @Override
@@ -24,12 +25,11 @@ public class ClientActivity extends Activity implements OnGestureListener
         setContentView(R.layout.main);
 
         gd = new GestureDetector(this);
-    //    gd.setIsLongpressEnabled(true);  
+        gd.setIsLongpressEnabled(true);  
 
     }
     
     public boolean onTouchEvent(MotionEvent event){
-    	// return gd.onTouchEvent(event);// ±¸×¢4    	
     	int iAction = event.getAction();
     	if (iAction == MotionEvent.ACTION_CANCEL ){
     		return false;
@@ -42,7 +42,7 @@ public class ClientActivity extends Activity implements OnGestureListener
     	  Short dy = (short)(y-lastY);
 
     	  mouseAction.send((short)MouseAction.MOUSEEVENT_MOVE, dx, dy, (short)0);
-    	  
+    	  distance += dx*dx +dy*dy;
     	//  DisplayToast("Network: (" + dx + "," + dy + "ww)");
     	  lastX = x;
     	  lastY = y;
@@ -63,6 +63,7 @@ public class ClientActivity extends Activity implements OnGestureListener
     	int y = (int)event.getY();
     	lastX = x;
     	lastY = y;
+    	distance = 0;
     //	DisplayToast("Down: (" + x + "," + y + ")");
 		return false;
 	}
@@ -76,9 +77,11 @@ public class ClientActivity extends Activity implements OnGestureListener
 
 	@Override
 	public void onLongPress(MotionEvent e) {
-	//    mouseAction.send((short)MouseAction.MOUSEEVENT_RIGHT, (short)0, (short)0, (short)0);
-	//	mouseAction.send((short)0, (short)0, (short)0, (short)0);
-	//	DisplayToast("LongPress");
+	    if (distance == 0){
+		mouseAction.send((short)MouseAction.MOUSEEVENT_RIGHT, (short)0, (short)0, (short)0);
+		mouseAction.send((short)0, (short)0, (short)0, (short)0);
+		DisplayToast("LongPress");
+	   }
 		
 	}
 
