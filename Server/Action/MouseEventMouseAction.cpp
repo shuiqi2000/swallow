@@ -1,5 +1,7 @@
 #include "StdAfx.h"
 #include "MouseEventMouseAction.h"
+#include <sstream>
+using namespace std;
 
 MouseEventMouseAction::MouseEventMouseAction(void)
 {
@@ -47,7 +49,13 @@ void MouseEventMouseAction::action(usint flag, usint dx, usint dy, sint  wheel){
 
 	if (flag & MouseAction::MOUSEEVENT_MOVE){
         dwFlags |= MOUSEEVENTF_MOVE;
-        OutputDebugString("MOUSEEVENTF_MOVE");
+		stringstream ss;
+		ss<<"MOUSEEVENTF_MOVE ";
+		ss<<*(short int *)&dx;
+		ss<<" ";
+		ss<<*(short int *)&dy;
+
+        OutputDebugString(ss.str().c_str());
 	}
 
 	if (flag & MouseAction::MOUSEEVENT_ABSOLUTEMOVE){
