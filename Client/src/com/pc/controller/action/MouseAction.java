@@ -1,5 +1,6 @@
 package com.pc.controller.action;
 
+import com.pc.controller.config.Config;
 import com.pc.controller.network.UDPNetwork;
 
 public class MouseAction extends Action {
@@ -8,6 +9,8 @@ public class MouseAction extends Action {
 	public static final int MOUSEEVENT_MIDDLE = 0x04;
 	public static final int MOUSEEVENT_ABSOLUTEMOVE = 0x08;
 	public static final int MOUSEEVENT_MOVE = 0x10;
+	
+	UDPNetwork network = new UDPNetwork(Config.controlPort);
 	public void send(short flag, short dx, short dy, short wheel){	
     	  byte[] dxbytes = new byte[2];
     	  dxbytes[0] = (byte)(dx & 0xff);
@@ -20,8 +23,7 @@ public class MouseAction extends Action {
     	  byte[] flagbytes = new byte[2];
     	  flagbytes[0] = (byte)(flag & 0xff);
     	  flagbytes[1] = (byte)((flag & 0xff00) >> 8);
-    	  
-    	  UDPNetwork network = new UDPNetwork();
+    	 
     	  byte data [] = {0x1,flagbytes[0],flagbytes[1],dxbytes[0], dxbytes[1],dybytes[0],dybytes[1],0x0,0x0};
     	  int ret = network.send(data);
 	}

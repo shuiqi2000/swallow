@@ -13,18 +13,28 @@ import android.content.Context;
 import android.net.DhcpInfo;
 import android.net.wifi.WifiManager;
 
-import com.pc.controller.ClientActivity;
+import com.pc.controller.ConfigActivity;
+import com.pc.controller.config.Config;
 
 public class UDPNetwork extends Network{
 	private int port;
 	private String ip;
-	private int clientPort = 10003;
 	private DatagramSocket socket = null;
-	public UDPNetwork(){
-		port = 10001;
-		ip = "192.168.0.102";
+	public UDPNetwork(int port){
+		this.port = port;
+		ip = Config.ip;
 		try {
-			socket = new DatagramSocket(clientPort);
+			socket = new DatagramSocket();
+		} catch (SocketException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public UDPNetwork(String ip){
+		port = 10001;
+		try {
+			socket = new DatagramSocket();
 		} catch (SocketException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -52,7 +62,7 @@ public class UDPNetwork extends Network{
 	public int send(byte[] data){
     	try {
 	
-			InetAddress serverAddress = InetAddress.getByName(ip);
+			InetAddress serverAddress = InetAddress.getByName(Config.ip);
 			DatagramPacket packet = new DatagramPacket(data,data.length,serverAddress,port);			
 			socket.send(packet);
 		} catch (SocketException e) {
@@ -90,7 +100,7 @@ public class UDPNetwork extends Network{
 	
 	public static String[] getNetworkObjects(){
 
-		WifiManager wifii= (WifiManager) ClientActivity.mainActivity.getSystemService(Context.WIFI_SERVICE);
+		WifiManager wifii= (WifiManager) ConfigActivity.object.getSystemService(Context.WIFI_SERVICE);
 		DhcpInfo dhcpInfo=wifii.getDhcpInfo();
 		int netmask = toHH(dhcpInfo.netmask);
 		int ipAddress = toHH(dhcpInfo.ipAddress);

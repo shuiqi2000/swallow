@@ -3,5 +3,7 @@
 
     <string name="hello">Hello World, ClientActivity!</string>
     <string name="app_name">Client</string>
+    <string name="SEARCH">搜索</string>
+    <string name="CONNECT">连接</string>
 
 </resources>

@@ -10,12 +10,17 @@ int APIENTRY _tWinMain(HINSTANCE hIns,
                      int       nCmdShow)
 {
 	boost::asio::io_service iso;
+
 	Network * actionNetwork = new UDPNetwork(10000,iso);
+
     ActionReceiver actionReceiver(actionNetwork);
 	actionReceiver.start();	
+
 	Network * configNetwork = new UDPNetwork(10001,iso);
+
 	ConfigReceiver configReceiver(configNetwork);
 	configReceiver.start();
+
 	iso.run();
     return 0;
 }

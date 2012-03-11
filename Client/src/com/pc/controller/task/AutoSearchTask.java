@@ -1,15 +1,15 @@
 package com.pc.controller.task;
 
+import com.pc.controller.config.Config;
 import com.pc.controller.network.Network;
 import com.pc.controller.network.UDPNetwork;
 
 public class AutoSearchTask {
 	public void run(){
-		Network network = new UDPNetwork();
+		Network network = new UDPNetwork(Config.configPort);
 		String[] addrs = UDPNetwork.getNetworkObjects();
-		String dAddr;
+		String dAddr = null;
 		for (String addr : addrs){
-		
 			byte[] buf = {0x1,0x1,0x0,0x0,0x0,0x0,0x0,0x0};
 			network.send(buf, addr);
 			byte[] data = network.receive();
@@ -17,8 +17,8 @@ public class AutoSearchTask {
 				dAddr = addr;
 				break;
 			}
-		
 		}
+		Config.ip = dAddr;
 	}
 
 }

@@ -29,9 +29,6 @@ public class ClientActivity extends Activity implements OnGestureListener
         gd = new GestureDetector(this);
         gd.setIsLongpressEnabled(true);  
         
-        AutoSearchTask task = new AutoSearchTask();
-        task.run();
-
     }
     
     public boolean onTouchEvent(MotionEvent event){

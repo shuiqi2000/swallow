@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/searchLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="fill_horizontal"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/SEARCH"
+            android:layout_width="78dp"
+            android:layout_height="32dp"
+            android:text="@string/SEARCH" />
+
+        <Button
+            android:id="@+id/CONNECT"
+            android:layout_width="78dp"
+            android:layout_height="32dp"
+            android:text="@string/CONNECT" />
+
+    </LinearLayout>
+
+</LinearLayout>
