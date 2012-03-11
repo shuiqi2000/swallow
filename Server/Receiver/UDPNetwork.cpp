@@ -1,8 +1,11 @@
 #include "StdAfx.h"
 #include "UDPNetwork.h"
 
-UDPNetwork::UDPNetwork(Receiver * receiver):Network(receiver){
-    serverPort = 10000;
+UDPNetwork::UDPNetwork(int port, 
+					   boost::asio::io_service& io_service):
+							  ios(io_service),
+					          serverPort(port)
+{
 	isRunning = true;
 	socket = shared_ptr<ip::udp::socket>(new ip::udp::socket(ios,ip::udp::endpoint(ip::udp::v4(),serverPort)));
 }
@@ -20,7 +23,6 @@ void UDPNetwork::test(){
 void UDPNetwork::start(){
 	//networkThread.join();
 	run();
-	ios.run();
 	//thread networkThread(boost::bind(&Network::run,this));
 }
 
@@ -54,6 +56,8 @@ void UDPNetwork::handlePacket(boost::shared_ptr<boost::asio::ip::udp::endpoint> 
 	OutputDebugString("\r\n");
 	OutputDebugString(sender_endpoint->address().to_string().c_str());
     OutputDebugString("\r\n");
+	sendIP = sender_endpoint->address().to_string();
+	sendPort = sender_endpoint->port();
 
 	receiver->handleData(useBuf);
 
@@ -70,4 +74,16 @@ void UDPNetwork::sendUDPPacket(string ip,int port){
     sock.open(ip::udp::v4());
 	sock.send_to(buffer("test"),send_ep);
 	
+}
+
+int UDPNetwork::send(unsigned char * data, int length){
+	io_service sios;
+	if (sendIP == ""){
+		return 1;
+	}
+	ip::udp::endpoint send_ep(ip::address::from_string(sendIP),sendPort);
+	ip::udp::socket sock(sios);
+    sock.open(ip::udp::v4());
+	sock.send_to(buffer(data, length), send_ep);
+	return 0;
 }

@@ -4,11 +4,11 @@ class Network;
 class Receiver
 {
 public:
-	Receiver(void);
+	Receiver(Network * network);
 	virtual ~Receiver(void);
 public:
-	void start();
-	void handleData(unsigned char * buf);
-private:
+	virtual void start();
+	virtual void handleData(unsigned char * buf);
+protected:
 	Network* network;
 };

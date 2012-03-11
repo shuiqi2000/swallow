@@ -19,14 +19,19 @@ private:
 	bool isRunning;
 	unsigned char buf[defaultBufSize];
 	sock_pt socket;
-    boost::asio::io_service ios;
+    boost::asio::io_service & ios;
+
+	//send's ip and port
+	string sendIP;
+	int sendPort;
 
 public:
-	UDPNetwork(Receiver * receiver);
+	UDPNetwork(int port, boost::asio::io_service& io_service);
 	virtual ~UDPNetwork(void);
     void test();
 	virtual void start();
 	static void sendUDPPacket(string ip,int port);
+	virtual int send(unsigned char * data, int length);
 
 protected:
 	virtual void run();

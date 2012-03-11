@@ -8,7 +8,7 @@ import android.view.MotionEvent;
 import android.widget.Toast;
 
 import com.pc.controller.action.MouseAction;
-import com.pc.controller.network.UDPNetwork;
+import com.pc.controller.task.AutoSearchTask;
 
 public class ClientActivity extends Activity implements OnGestureListener
 
@@ -19,13 +19,18 @@ public class ClientActivity extends Activity implements OnGestureListener
 	private int distance = 0;
 	private GestureDetector gd;  
 	private MouseAction mouseAction = new MouseAction();
+	public static ClientActivity mainActivity;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mainActivity = this;
         setContentView(R.layout.main);
 
         gd = new GestureDetector(this);
         gd.setIsLongpressEnabled(true);  
+        
+        AutoSearchTask task = new AutoSearchTask();
+        task.run();
 
     }
     
