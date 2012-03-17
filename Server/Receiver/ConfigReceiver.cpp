@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "ConfigReceiver.h"
 
 ConfigReceiver::ConfigReceiver(Network * network):Receiver(network){

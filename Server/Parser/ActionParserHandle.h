@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ACTIONPARSERHANDLE_H
+#define ACTIONPARSERHANDLE_H
 #include <map>
 #include "ActionParser.h"
 using namespace std;
@@ -19,3 +20,4 @@ private:
 	static ActionParserHandle* actionParserHandle;
 	
 };
+#endif

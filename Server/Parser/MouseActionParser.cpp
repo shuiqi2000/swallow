@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "MouseActionParser.h"
 #include "../action/MouseAction.h"
 #include "../action/MouseEventMouseAction.h"
@@ -22,3 +21,4 @@ int MouseActionParser::parse(unsigned char *data){
 }
 
 MouseActionParser mouseActionParser;
+

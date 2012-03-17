@@ -1,9 +1,13 @@
-#pragma once
+#ifndef UDPNETWORK_H
+#define UDPNETWORK_H
+
+#define BOOST_REGEX_NO_LIB
 #include <boost/thread.hpp>
 #include <boost/asio.hpp>
 #include <string>
 #include "Receiver.h"
 #include "Network.h"
+
 using namespace std;
 using namespace boost;
 using namespace boost::asio;
@@ -38,8 +42,9 @@ protected:
 
 private:
 	void handlePacket(boost::shared_ptr<boost::asio::ip::udp::endpoint> sender_endpoint, 
-		const system::error_code& error,
+//		const boost::system::error_code& error,
 	    unsigned char * buf,
 	    int size);
 
 };
+#endif

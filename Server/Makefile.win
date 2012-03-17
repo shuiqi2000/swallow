@@ -1,0 +1,63 @@
+# Project: Server
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe -D__DEBUG__
+CC   = gcc.exe -D__DEBUG__
+WINDRES = windres.exe
+RES  = 
+OBJ  = Server.o receiver/ActionReceiver.o receiver/ConfigReceiver.o receiver/Network.o receiver/Receiver.o receiver/UDPNetwork.o action/MouseAction.o action/MouseEventMouseAction.o parser/ActionParser.o parser/ActionParserHandle.o parser/MouseActionParser.o log/Log.o $(RES)
+LINKOBJ  = Server.o receiver/ActionReceiver.o receiver/ConfigReceiver.o receiver/Network.o receiver/Receiver.o receiver/UDPNetwork.o action/MouseAction.o action/MouseEventMouseAction.o parser/ActionParser.o parser/ActionParserHandle.o parser/MouseActionParser.o log/Log.o $(RES)
+LIBS =  -L"d:/Dev-Cpp/lib" -L"G:/研究/c++/boost/boost库使用/SDK/boost_1_44_0/bin/vc9/lib" -mwindows -lwsock32 -lboost_system -lWS2_32 -mwindows  -lgmon -pg  -g3 
+INCS =  -I"d:/Dev-Cpp/include" 
+CXXINCS =  -I"d:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"d:/Dev-Cpp/include/c++/3.4.2/backward"  -I"d:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"d:/Dev-Cpp/include/c++/3.4.2"  -I"d:/Dev-Cpp/include" 
+BIN  = Server.exe
+CXXFLAGS = $(CXXINCS)   -pg -g3
+CFLAGS = $(INCS)   -pg -g3
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before Server.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "Server.exe" $(LIBS)
+
+Server.o: Server.cpp
+	$(CPP) -c Server.cpp -o Server.o $(CXXFLAGS)
+
+receiver/ActionReceiver.o: receiver/ActionReceiver.cpp
+	$(CPP) -c receiver/ActionReceiver.cpp -o receiver/ActionReceiver.o $(CXXFLAGS)
+
+receiver/ConfigReceiver.o: receiver/ConfigReceiver.cpp
+	$(CPP) -c receiver/ConfigReceiver.cpp -o receiver/ConfigReceiver.o $(CXXFLAGS)
+
+receiver/Network.o: receiver/Network.cpp
+	$(CPP) -c receiver/Network.cpp -o receiver/Network.o $(CXXFLAGS)
+
+receiver/Receiver.o: receiver/Receiver.cpp
+	$(CPP) -c receiver/Receiver.cpp -o receiver/Receiver.o $(CXXFLAGS)
+
+receiver/UDPNetwork.o: receiver/UDPNetwork.cpp
+	$(CPP) -c receiver/UDPNetwork.cpp -o receiver/UDPNetwork.o $(CXXFLAGS)
+
+action/MouseAction.o: action/MouseAction.cpp
+	$(CPP) -c action/MouseAction.cpp -o action/MouseAction.o $(CXXFLAGS)
+
+action/MouseEventMouseAction.o: action/MouseEventMouseAction.cpp
+	$(CPP) -c action/MouseEventMouseAction.cpp -o action/MouseEventMouseAction.o $(CXXFLAGS)
+
+parser/ActionParser.o: parser/ActionParser.cpp
+	$(CPP) -c parser/ActionParser.cpp -o parser/ActionParser.o $(CXXFLAGS)
+
+parser/ActionParserHandle.o: parser/ActionParserHandle.cpp
+	$(CPP) -c parser/ActionParserHandle.cpp -o parser/ActionParserHandle.o $(CXXFLAGS)
+
+parser/MouseActionParser.o: parser/MouseActionParser.cpp
+	$(CPP) -c parser/MouseActionParser.cpp -o parser/MouseActionParser.o $(CXXFLAGS)
+
+log/Log.o: log/Log.cpp
+	$(CPP) -c log/Log.cpp -o log/Log.o $(CXXFLAGS)

@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "MouseAction.h"
 const usint MouseAction::MOUSEEVENT_LEFT = 0x01;
 const usint MouseAction::MOUSEEVENT_RIGHT = 0x02;

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef NETWORK_H
+#define NETWORK_H
 #include "Receiver.h"
 
 class Receiver;
@@ -15,4 +16,4 @@ protected:
 	Receiver * receiver;
 
 };
-
+#endif

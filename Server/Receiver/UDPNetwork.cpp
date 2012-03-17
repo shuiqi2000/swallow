@@ -1,5 +1,5 @@
-#include "StdAfx.h"
 #include "UDPNetwork.h"
+#include "../log/Log.h"
 
 UDPNetwork::UDPNetwork(int port, 
 					   boost::asio::io_service& io_service):
@@ -38,7 +38,7 @@ void UDPNetwork::run(){
 		                           boost::bind(&UDPNetwork::handlePacket,
 		                                       this,
 					                           sender_endpoint,
-		                                       placeholders::error,
+//		                                       placeholders::error,
 					                           buf,
 					                           placeholders::bytes_transferred)); 
     
@@ -47,7 +47,7 @@ void UDPNetwork::run(){
 }
 
 void UDPNetwork::handlePacket(boost::shared_ptr<boost::asio::ip::udp::endpoint> sender_endpoint, 
-		const system::error_code& error,
+//		const boost::system::error_code& error,
 	    unsigned char * buf,
 	    int size){
 
@@ -60,6 +60,7 @@ void UDPNetwork::handlePacket(boost::shared_ptr<boost::asio::ip::udp::endpoint> 
 	sendPort = sender_endpoint->port();
 
 	receiver->handleData(useBuf);
+	Log::debug(string("handlePacket"));
 
 	run();
 

@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "ActionParserHandle.h"
 
 ActionParserHandle* ActionParserHandle::actionParserHandle = NULL;

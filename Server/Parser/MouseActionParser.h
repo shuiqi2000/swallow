@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MOUSEACTIONPARSER_H
+#define MOUSEACTIONPARSER_H
 #include "actionparser.h"
 #include "ActionParserHandle.h"
 #include "../action/MouseAction.h"
@@ -18,3 +19,4 @@ private:
 };
 
 extern MouseActionParser mouseActionParser;
+#endif

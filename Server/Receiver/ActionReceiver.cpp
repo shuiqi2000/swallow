@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "ActionReceiver.h"
 #include "../action/MouseEventMouseAction.h"
 #include "../parser/ActionParserHandle.h"

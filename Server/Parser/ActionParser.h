@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ACTIONPARSER_H
+#define ACTIONPARSER_H
 #include <map>
 using namespace std;
 class ActionParser
@@ -10,3 +11,4 @@ public:
 	virtual int parse(unsigned char * data);
 
 };
+#endif

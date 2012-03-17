@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "Receiver.h"
 
 Receiver::Receiver(Network * network)
@@ -9,7 +8,7 @@ Receiver::Receiver(Network * network)
 
 Receiver::~Receiver(void)
 {
-	if (network != NULL){
+	if (network != 0){
 	    delete network;
 	}
 }

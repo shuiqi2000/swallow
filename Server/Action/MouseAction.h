@@ -1,5 +1,5 @@
-#pragma once
-
+#ifndef MOUSEACTION_H
+#define MOUSEACTION_H
 typedef unsigned short int usint;
 typedef short int sint;
 class MouseAction
@@ -34,3 +34,4 @@ public:
 	const static usint MOUSEEVENT_MOVE;
 
 };
+#endif

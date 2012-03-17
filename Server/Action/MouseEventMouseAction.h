@@ -1,5 +1,7 @@
-#pragma once
+#ifndef MOUSEEVENTMOUSEACTION_H
+#define MOUSEEVENTMOUSEACTION_H
 #include "mouseaction.h"
+#include <windows.h>
 #include <winuser.h>
 
 
@@ -15,3 +17,4 @@ public:
 	usint lastFlag;
 };
 
+#endif
