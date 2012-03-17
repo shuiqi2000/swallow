@@ -1,10 +1,12 @@
-#include "stdafx.h"
 #include "Server.h"
+
+
+
 #include "Receiver/ActionReceiver.h"
 #include "Receiver/ConfigReceiver.h"
 #include "receiver/UDPNetwork.h"
 
-#include "targetver.h"
+#include "TargetVersion.h"
 #include "log/Log.h"
 
 int APIENTRY _tWinMain(HINSTANCE hIns,
