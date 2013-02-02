@@ -101,9 +101,9 @@
         android:id="@+id/linearLayout5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
-
+
         <Button
-            android:id="@+id/CONNECT"
+            android:id="@+id/Button02"
             android:layout_width="72dp"
             android:layout_height="42dp"
             android:layout_marginLeft="200dp"
@@ -111,6 +111,14 @@
             android:text="@string/CONNECT" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/Button03"
+        android:layout_width="72dp"
+        android:layout_height="42dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/CONNECT" />
 
     <LinearLayout
         android:id="@+id/searchLinearLayout"

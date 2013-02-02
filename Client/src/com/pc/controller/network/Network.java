@@ -9,8 +9,12 @@ public class Network {
 		return 0;
 	}
 	
-	public byte[] receive(){
+	public Object[] receive(){
 		return null;
+	}
+	
+	public boolean isConnected(String addr){
+		return false;
 	}
 	/*
 	public String[] getNetworkObjects(){

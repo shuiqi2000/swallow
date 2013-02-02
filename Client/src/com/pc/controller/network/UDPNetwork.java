@@ -18,13 +18,13 @@ import com.pc.controller.config.Config;
 
 public class UDPNetwork extends Network{
 	private int port;
-	private String ip;
 	private DatagramSocket socket = null;
+	private int waitTime = 10000;
 	public UDPNetwork(int port){
 		this.port = port;
-		ip = Config.ip;
 		try {
 			socket = new DatagramSocket();
+			socket.setSoTimeout(waitTime);
 		} catch (SocketException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -35,15 +35,27 @@ public class UDPNetwork extends Network{
 		port = 10001;
 		try {
 			socket = new DatagramSocket();
+			socket.setSoTimeout(waitTime);
 		} catch (SocketException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
+	public boolean isConnected(String addr){
+		InetAddress serverAddress;
+		try {
+			serverAddress = InetAddress.getByName(addr);
+			socket.connect(serverAddress, port);
+			return socket.isConnected();
+		} catch (UnknownHostException e) {
+			return false;
+		}
+
+	}
+	
 	public int send(byte[] data, String addr){
     	try {
-    		socket.setSoTimeout(500);
 			InetAddress serverAddress = InetAddress.getByName(addr);
 			DatagramPacket packet = new DatagramPacket(data,data.length,serverAddress,port);			
 			socket.send(packet);
@@ -79,12 +91,15 @@ public class UDPNetwork extends Network{
 	}
 
 	
-	public byte[] receive(){
+	public Object[] receive(){
 	    try {
+	    	Object[] result = new Object[2];
 	    	byte[] rbuf = {0,0,0,0,0,0,0,0};
 	    	DatagramPacket packet = new DatagramPacket(rbuf, rbuf.length);
 	    	socket.receive(packet);
-	    	return rbuf;
+	    	result[0] = packet.getAddress().getHostName();
+	    	result[1] = rbuf;
+ 	    	return result;
 	    } catch (SocketTimeoutException ste){
 			ste.printStackTrace();
 		} catch (PortUnreachableException pue){

@@ -19,12 +19,12 @@ int APIENTRY _tWinMain(HINSTANCE hIns,
 
     ActionReceiver actionReceiver(actionNetwork);
 	actionReceiver.start();	
-
+/*
 	Network * configNetwork = new UDPNetwork(10001,iso);
 
 	ConfigReceiver configReceiver(configNetwork);
 	configReceiver.start();
-
+*/
 	iso.run();
     return 0;
 }
