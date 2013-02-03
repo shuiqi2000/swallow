@@ -11,5 +11,6 @@
     <string name="MouseControl">鼠标控制</string>
     <string name="OtherControl">其它</string>
     <string name="MouseControlDescription">触摸屏幕，可以操作电脑</string>
+    <string name="title">主机列表</string>
 
 </resources>

@@ -19,11 +19,18 @@ public class ClientActivity extends Activity implements OnGestureListener
 	private int lastY;
 	private int distance = 0;
 	private GestureDetector gd;  
-	private MouseAction mouseAction = new MouseAction();
+	private MouseAction mouseAction;
 	public static ClientActivity mainActivity;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle bundle = this.getIntent().getExtras();
+        if (bundle != null && bundle.containsKey("HostAddr")){
+        	mouseAction = new MouseAction(bundle.getString("HostAddr"));
+        } else {
+        	//
+        }
         mainActivity = this;
         setContentView(R.layout.main);
 
@@ -110,14 +117,14 @@ public class ClientActivity extends Activity implements OnGestureListener
 	}
 	
 	public boolean onKeyDown(int keyCode, KeyEvent event)  {   
-	    if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {   
+	   /* if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {   
 	    	Intent intent = new Intent();  
 	    	intent.setClass(ClientActivity.this, ConfigActivity.class);
 			startActivity(intent);
 			finish();
 	        return true;   
 	    }   
-	  
+	  */
 	    return super.onKeyDown(keyCode, event);   
 	}  
 

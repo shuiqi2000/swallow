@@ -9,17 +9,30 @@ import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.DhcpInfo;
 import android.net.wifi.WifiManager;
 
-import com.pc.controller.ConfigActivity;
-import com.pc.controller.config.Config;
+import com.pc.controller.PCListActivity;
 
 public class UDPNetwork extends Network{
 	private int port;
 	private DatagramSocket socket = null;
 	private int waitTime = 10000;
+	private String hostAddr;
+	public UDPNetwork(String hostAddr, int port){
+		this.port = port;
+		this.hostAddr = hostAddr;
+		try {
+			socket = new DatagramSocket();
+			socket.setSoTimeout(waitTime);
+		} catch (SocketException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public UDPNetwork(int port){
 		this.port = port;
 		try {
@@ -74,7 +87,7 @@ public class UDPNetwork extends Network{
 	public int send(byte[] data){
     	try {
 	
-			InetAddress serverAddress = InetAddress.getByName(Config.ip);
+			InetAddress serverAddress = InetAddress.getByName(hostAddr);
 			DatagramPacket packet = new DatagramPacket(data,data.length,serverAddress,port);			
 			socket.send(packet);
 		} catch (SocketException e) {
@@ -113,9 +126,9 @@ public class UDPNetwork extends Network{
 	    return null;	
 	}
 	
-	public static String[] getNetworkObjects(){
+	public static String[] getNetworkObjects(Activity activity){
 
-		WifiManager wifii= (WifiManager) ConfigActivity.object.getSystemService(Context.WIFI_SERVICE);
+		WifiManager wifii= (WifiManager) activity.getSystemService(Context.WIFI_SERVICE);
 		DhcpInfo dhcpInfo=wifii.getDhcpInfo();
 		int netmask = toHH(dhcpInfo.netmask);
 		int ipAddress = toHH(dhcpInfo.ipAddress);

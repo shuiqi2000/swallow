@@ -47,8 +47,8 @@ public class ConfigActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-		        AutoSearchTask task = new AutoSearchTask(object);
-		        task.execute(null);
+		     //   AutoSearchTask task = new AutoSearchTask(object);
+		    //    task.execute(null);
 			}
 			
 		});

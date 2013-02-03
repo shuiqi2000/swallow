@@ -5,18 +5,18 @@ import java.util.List;
 
 import android.os.AsyncTask;
 
-import com.pc.controller.ConfigActivity;
+import com.pc.controller.PCListActivity;
 import com.pc.controller.config.Config;
 import com.pc.controller.network.Network;
 import com.pc.controller.network.UDPNetwork;
 
-public class AutoSearchTask extends AsyncTask<String, Integer, String>{
-	private ConfigActivity activity = null;
+public class AutoSearchTask extends AsyncTask<String, Integer, List<String[]>>{
+	private PCListActivity activity = null;
 	private int addrSum = 0;
 	private int addrCount = 0;
 	Network network = new UDPNetwork(Config.controlPort);
 	
-	public AutoSearchTask(ConfigActivity activity){
+	public AutoSearchTask(PCListActivity activity){
 		this.activity = activity;
 		activity.startWait();
 		Broadcast broadcast = new Broadcast();
@@ -25,7 +25,7 @@ public class AutoSearchTask extends AsyncTask<String, Integer, String>{
 	
 	public class Broadcast extends Thread{
 		public void run(){
-			String[] addrs = UDPNetwork.getNetworkObjects();
+			String[] addrs = UDPNetwork.getNetworkObjects(activity);
 			addrSum = addrs.length;
 			for (String addr : addrs) {
 				if (addr == null){
@@ -43,21 +43,30 @@ public class AutoSearchTask extends AsyncTask<String, Integer, String>{
 	}
 	
 	@Override
-	protected String doInBackground(String... params) {
+	protected List<String[]> doInBackground(String... params) {
+		List<String[]> hostList = new ArrayList<String[]>();
 		byte[] data = null;
-		Object[] res = network.receive();
-		data = (byte[])res[1];
-		if (data != null && data.length >= 2 && data[0] == 1
+		for(int i =0; i<1; i++){
+		  Object[] res = network.receive();
+		  if(res == null){
+			  continue;
+		  }
+		  data = (byte[])res[1];
+		  if (data != null && data.length >= 2 && data[0] == 1
 				&& data[1] == 1) {
-			return (String)res[0];
+			String [] host = new String[2];
+			host[0] = (String)res[0];
+			host[1] = new String(data);
+			hostList.add(host);
+		  }
 		}
-		return null;
+		return hostList;
 	}
 	
-	protected void onPostExecute(String result){
-		if (result != null){
-			Config.ip = result;
-			activity.setPCAddr(result);
+	protected void onPostExecute(List<String[]> result){
+		if (result != null && !result.isEmpty()){
+			//Config.ip = result;
+			activity.setHostList(result);
 		} 
 		activity.stopWait();
 	}

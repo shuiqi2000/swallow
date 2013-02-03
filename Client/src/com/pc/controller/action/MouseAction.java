@@ -10,7 +10,12 @@ public class MouseAction extends Action {
 	public static final int MOUSEEVENT_ABSOLUTEMOVE = 0x08;
 	public static final int MOUSEEVENT_MOVE = 0x10;
 	
-	UDPNetwork network = new UDPNetwork(Config.controlPort);
+	private UDPNetwork network;
+	
+	public MouseAction(String addr){
+	   network = new UDPNetwork(addr, Config.controlPort);
+	}
+	
 	public void send(short flag, short dx, short dy, short wheel){	
     	  byte[] dxbytes = new byte[2];
     	  dxbytes[0] = (byte)(dx & 0xff);
