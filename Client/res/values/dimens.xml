@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="listview_left">45pt</dimen>
+    <dimen name="title_top">5pt</dimen>
+    <dimen name="title_left">5pt</dimen>
+    <dimen name="title_font_size">25pt</dimen>
+    <dimen name="title_bottom">2pt</dimen>
+    <dimen name="pcname_font_size">20pt</dimen>
+    <dimen name="pcname_left">5pt</dimen>
+    <dimen name="listview_top">10pt</dimen>
+</resources>

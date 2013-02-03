@@ -117,14 +117,14 @@ public class ClientActivity extends Activity implements OnGestureListener
 	}
 	
 	public boolean onKeyDown(int keyCode, KeyEvent event)  {   
-	   /* if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {   
+	    if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {   
 	    	Intent intent = new Intent();  
-	    	intent.setClass(ClientActivity.this, ConfigActivity.class);
+	    	intent.setClass(ClientActivity.this, PCListActivity.class);
 			startActivity(intent);
 			finish();
 	        return true;   
 	    }   
-	  */
+	  
 	    return super.onKeyDown(keyCode, event);   
 	}  
 

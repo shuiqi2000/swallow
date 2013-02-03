@@ -1,17 +1,20 @@
 package com.pc.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
-import com.pc.controller.config.Config;
 import com.pc.controller.task.AutoSearchTask;
 
 public class PCListActivity extends Activity {
@@ -27,6 +30,7 @@ public class PCListActivity extends Activity {
 		object = this;
 		setContentView(R.layout.pclist);
 		_hostListView = (ListView)findViewById(R.id.pcListView);
+        _hostListView.setDivider(null);
 		_hostListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 			@Override
@@ -47,17 +51,20 @@ public class PCListActivity extends Activity {
 	
 	public void setHostList(List<String[]> hostList){
 		this.hostList = hostList;
-		String[] hostArray = convertToHostArray(hostList);
-		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, hostArray);
-		_hostListView.setAdapter(arrayAdapter);
+		List<Map<String, Object>> hostArray = convertToHostArray(hostList);
+		SimpleAdapter simpleAdapter = new SimpleAdapter(this, hostArray, R.layout.pcitem,
+                new String[]{"pcimage", "pcname"},
+                new int[]{R.id.pcimage, R.id.pcname});
+		_hostListView.setAdapter(simpleAdapter);
 	}
 	
-	private String[] convertToHostArray(List<String[]> hostList){
-		String [] hostArray = new String[hostList.size()];
-		int index = 0;
+	private List<Map<String, Object>> convertToHostArray(List<String[]> hostList){
+		List<Map<String, Object>> hostArray = new ArrayList<Map<String, Object>>();
 		for(String[] host : hostList){
-			hostArray[index++] = host[0];
+			Map<String, Object> hostMap = new HashMap<String, Object>();
+			hostMap.put("pcimage", R.drawable.pc);
+			hostMap.put("pcname", host[0]);
+			hostArray.add(hostMap);
 		}
 		return hostArray;
 	}
@@ -83,5 +90,15 @@ public class PCListActivity extends Activity {
 	public void startWait(){
 		_pd = ProgressDialog.show(this,"同步", "正在同步…");
 	}
+	
+	public boolean onKeyDown(int keyCode, KeyEvent event)  {   
+	    if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {   
+	    	finish();
+	    	System.exit(0);
+	        return true;      
+	    }   
+	  
+	    return super.onKeyDown(keyCode, event);   
+	}  
 
 }

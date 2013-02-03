@@ -1,25 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    android:background="@drawable/star">
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:text="@string/title" />
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:gravity="bottom"
+        android:paddingBottom="@dimen/title_bottom"
+        android:paddingLeft="@dimen/title_left"
+        android:paddingTop="@dimen/title_top"
+        android:text="@string/title"
+        android:textSize="@dimen/title_font_size" 
+        android:background="@drawable/title_b"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.73"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <ListView
             android:id="@+id/pcListView"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:background="@drawable/list_b"
+            android:paddingTop="@dimen/listview_top" >
+
         </ListView>
 
     </LinearLayout>
